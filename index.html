@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NesTop Academy - Nest to Next</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -26,14 +26,14 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
         
         body {
             background-color: var(--section-bg-light);
             color: var(--dark-text);
             line-height: 1.6;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
         
         .container {
@@ -856,7 +856,7 @@
                     <p>Our curriculum is designed to be accessible to everyone, focusing on core skills and building confidence step by step. With our expert trainers and a supportive community, you won't just learn a language—you'll gain a powerful tool for communication and success.</p>
                     <div class="stats">
                         <div class="stat-item">
-                            <div style="font-family: 'Inter';" class="stat-number" data-target="4000">0</div>
+                            <div style="font-family: 'Poppins';" class="stat-number" data-target="4000">0</div>
                             <div class="stat-text">Active Students</div>
                         </div>
                         <div class="stat-item">
@@ -1044,7 +1044,7 @@
     <section class="languages fade-in" id="languages">
         <div class="container">
             <div class="section-title">
-                <h2>Multilingual Resources</h2>
+                <h2 style="font-family: 'Poppins';">Multilingual Resources</h2>
                 <p>Daily access to newspapers and resources in 6 languages</p>
             </div>
             <div class="language-grid">
@@ -1264,7 +1264,7 @@
         // Function to start the counting animation
         const startCounters = () => {
             const counters = document.querySelectorAll('.stat-number');
-            const speed = 500; // The lower the number, the faster the counter
+            const speed = 200; // The lower the number, the faster the counter
 
             counters.forEach(counter => {
                 const target = +counter.getAttribute('data-target');
@@ -1306,4 +1306,3 @@
     </script>
 </body>
 </html>
-
