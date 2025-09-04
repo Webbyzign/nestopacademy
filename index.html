@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NesTop Academy - Nest to Next</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-dark: #0a1930;
+            --primary-medium: #1a3a6c;
+            --primary-light: #2a5aaa;
+            --accent: #ffcc00;
+            --accent-light: #ffdd55;
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+            --dark-text: #333333;
+            --light-text: #666666;
+            --section-bg-light: #ffffff;
+            --section-bg-medium: #f8f8f8;
+            --section-bg-dark: #e0e0e0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background-color: var(--section-bg-light);
+            color: var(--dark-text);
+            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: var(--primary-dark);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-left: 10px;
+        }
+        
+        .logo span {
+            color: var(--primary-light);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 30px;
+        }
+        
+        .nav-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--primary-light);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 150px 0 100px;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-medium) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            color: var(--white);
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffcc00" fill-opacity="0.1" d="M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,218.7C672,224,768,160,864,138.7C960,117,1056,139,1152,149.3C1248,160,1344,160,1392,160L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-dark);
+            color: var(--light-gray);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--primary-dark);
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Sections */
+        section {
+            padding: 80px 0;
+            background-color: var(--section-bg-light);
+            color: var(--dark-text);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark-text);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+        }
+        
+        .section-title p {
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* About Section */
+        .about {
+            background-color: var(--section-bg-medium);
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 30px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-left: 30px;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--dark-text);
+        }
+        
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .stat-item {
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+            padding: 20px;
+            background-color: var(--section-bg-light);
+            border: 1px solid var(--light-gray);
+            margin: 10px;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-light); /* Changed to primary-light */
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+        
+        /* Programs Section */
+        .programs {
+            background-color: var(--section-bg-light);
+        }
+        
+        .program-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .program-card {
+            background-color: var(--section-bg-medium);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            color: var(--dark-text);
+        }
+        
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .program-card-header {
+            background-color: var(--primary-light);
+            padding: 20px;
+            text-align: center;
+            color: var(--white);
+        }
+        
+        .program-card-body {
+            padding: 20px;
+        }
+        
+        .program-card-body ul {
+            list-style: none;
+            margin: 20px 0;
+            color: var(--light-text);
+        }
+        
+        .program-card-body ul li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .program-card-body ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        /* Features Section */
+        .features {
+            background-color: var(--section-bg-light);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-item {
+            background-color: var(--section-bg-medium);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            color: var(--dark-text);
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-5px);
+            background-color: var(--section-bg-dark);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-light);
+            margin-bottom: 20px;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--section-bg-medium);
+        }
+        
+        .testimonial-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: var(--section-bg-light);
+            border: 1px solid var(--light-gray);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            color: var(--dark-text);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            padding: 0 20px;
+            color: var(--light-text);
+        }
+        
+        .testimonial-text::before,
+        .testimonial-text::after {
+            content: '"';
+            font-size: 3rem;
+            color: var(--accent);
+            opacity: 0.5;
+            position: absolute;
+        }
+        
+        .testimonial-text::before {
+            top: -15px;
+            left: -5px;
+        }
+        
+        .testimonial-text::after {
+            bottom: -30px;
+            right: -5px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            font-weight: bold;
+            color: var(--primary-dark);
+        }
+        
+        /* Languages Section */
+        .languages {
+            background-color: var(--section-bg-light);
+        }
+        
+        .language-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+        
+        .language-item {
+            padding: 20px;
+            background-color: var(--section-bg-medium);
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            color: var(--dark-text);
+        }
+        
+        .language-item:hover {
+            transform: scale(1.05);
+            background-color: var(--section-bg-dark);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .language-flag {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Methodology Section */
+        .methodology {
+            background-color: var(--section-bg-medium);
+        }
+        
+        .method-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .method-step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--section-bg-light);
+            border: 1px solid var(--light-gray);
+            border-radius: 10px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            color: var(--dark-text);
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-light);
+            color: var(--light-gray);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Contact Section */
+        .contact {
+            background-color: var(--section-bg-light);
+        }
+        
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            color: var(--light-gray);
+            font-size: 1.2rem;
+        }
+        
+        .contact-info-item h3 {
+            color: var(--dark-text);
+        }
+        .contact-info-item p {
+            color: var(--light-text);
+        }
+
+        /* Contact Form */
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--section-bg-medium);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-form h3 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: var(--dark-text);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: var(--light-text);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--section-bg-dark);
+            border-radius: 5px;
+            font-size: 1rem;
+            color: var(--dark-text);
+            background-color: var(--section-bg-light);
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-light);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            cursor: pointer;
+            border: none;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-dark);
+            padding: 50px 0 20px;
+            text-align: center;
+            color: var(--white);
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            color: var(--light-gray);
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-dark);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--primary-light);
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 10px;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ccc;
+        }
+        
+        /* New Back to Top Button Styling */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary-light);
+            color: var(--white);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* New class for scroll animation */
+        section.fade-in {
+            opacity: 0;
+            transition: opacity 0.8s ease-out, transform 0.6s ease-out;
+            transform: translateY(20px);
+        }
+        
+        section.fade-in.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .program-card, .feature-item, .stat-item, .testimonial-card, .language-item, .method-step {
+            transition: transform 0.6s ease-out, opacity 0.6s ease-out, box-shadow 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .program-card.animate, .feature-item.animate, .stat-item.animate, .testimonial-card.animate, .language-item.animate, .method-step.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                background-color: var(--primary-medium);
+                width: 100%;
+                height: calc(100vh - 80px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s ease;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 20px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-text {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .contact-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <h1>Nes<span>Top</span> Academy</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars" style="color: white;"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h2>From Foundation to Fluency</h2>
+            <p>Master essential Arabic and English language skills with our practical, accessible, and certified online education.</p>
+            <a href="#programs" class="btn">Explore Programs</a>
+        </div>
+    </section>
+
+    <section class="about fade-in" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Story</h2>
+                <p>An ISO-certified institution committed to your language journey.</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>NesTop Academy</h3>
+                    <p>At NesTop Academy, we believe that learning a new language opens doors to new opportunities. Our mission is to guide you from the <b>nest</b> of basic knowledge to the <b>next</b> level of complete fluency. We specialize in providing comprehensive and practical Arabic and English language education, ensuring every lesson is directly applicable to your life.</p>
+                    <p>Our curriculum is designed to be accessible to everyone, focusing on core skills and building confidence step by step. With our expert trainers and a supportive community, you won't just learn a language—you'll gain a powerful tool for communication and success.</p>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div style="font-family: 'Inter';" class="stat-number" data-target="4000">0</div>
+                            <div class="stat-text">Active Students</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="6">0</div>
+                            <div class="stat-text">Languages</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="100">0</div>
+                            <div class="stat-text">Practicality</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1000" alt="Students learning languages together" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="programs fade-in" id="programs">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Programs</h2>
+                <p>Comprehensive language learning programs tailored to learners' needs</p>
+            </div>
+            <div class="program-cards">
+                <div class="program-card">
+                    <div class="program-card-header">
+                        <h3>Arabic Learning</h3>
+                    </div>
+                    <div class="program-card-body">
+                        <p>Focus on grammar, vocabulary, conversation, and cultural understanding</p>
+                        <ul>
+                            <li>Word of the Day</li>
+                            <li>Vocabulary Lists</li>
+                            <li>Video Learning</li>
+                            <li>Grammar Analysis</li>
+                            <li>Inspirational Quotes</li>
+                        </ul>
+                        <a href="https://chat.whatsapp.com/LnBc2mhK3D01X16Czt9eyN" class="btn">Join Group</a>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-card-header">
+                        <h3>English Learning</h3>
+                    </div>
+                    <div class="program-card-body">
+                        <p>Focus on reading, speaking, writing, and listening skills</p>
+                        <ul>
+                            <li>Word of the Day</li>
+                            <li>Grammar Bite</li>
+                            <li>Idiom of the Day</li>
+                            <li>Mini Reading Passage</li>
+                            <li>Conversation Practice</li>
+                        </ul>
+                        <a href="https://chat.whatsapp.com/FTCWJXoLpdwLqxYRQisSKF" class="btn">Join Group</a>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-card-header">
+                        <h3>Translation</h3>
+                    </div>
+                    <div class="program-card-body">
+                        <p>Develop bilingual translation skills with practical exercises</p>
+                        <ul>
+                            <li>News Analysis</li>
+                            <li>Pulse of Words</li>
+                            <li>Common Phrases</li>
+                            <li>Language Enrichment</li>
+                            <li>Translation Journey</li>
+                        </ul>
+                        <a href="https://chat.whatsapp.com/IRU98MashyWHp9HaL95h8N" class="btn">Join Group</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features fade-in" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Us</h2>
+                <p>Discover what makes NesTop Academy the preferred choice for language learning</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>ISO Certified</h3>
+                    <p>Recognized for quality and excellence in language education</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>6 Languages</h3>
+                    <p>Comprehensive learning resources in multiple languages</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Study Materials</h3>
+                    <p>PDFs, notes, and worksheets for every course</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>Expert Trainers</h3>
+                    <p>Experienced and supportive teaching staff</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <h3>Daily Newspapers</h3>
+                    <p>Access to newspapers in 6 different languages</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>Online Classes</h3>
+                    <p>Flexible learning options from anywhere</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials fade-in" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Student Testimonials</h2>
+                <p>What our students say about their learning experience</p>
+            </div>
+            <div class="testimonial-cards">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        The Arabic course completely transformed my language skills. The daily activities made learning engaging and practical.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="avatarone.jpg" alt="" style="width: 50px;">
+                        </div>
+                        <div>
+                            <h4>Ahmed Khan</h4>
+                            <p>Arabic Student</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        The translation program helped me secure a job as a professional translator. The practical approach is unmatched!
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="avatarthree.jpg" alt="" style="width: 50px;">
+                        </div>
+                        <div>
+                            <h4>Sarah Johnson</h4>
+                            <p>Translation Student</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        I tried many English courses, but NesTop's method of teaching through daily practice really made the difference.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="avatartwo.jpg" alt="" style="width: 50px;">
+                        </div>
+                        <div>
+                            <h4>Maria Rodriguez</h4>
+                            <p>English Student</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="languages fade-in" id="languages">
+        <div class="container">
+            <div class="section-title">
+                <h2>Multilingual Resources</h2>
+                <p>Daily access to newspapers and resources in 6 languages</p>
+            </div>
+            <div class="language-grid">
+                <div class="language-item">
+                    <div class="language-flag">📰</div>
+                    <h3>English</h3>
+                </div>
+                <div class="language-item">
+                    <div class="language-flag">📰</div>
+                    <h3>Arabic</h3>
+                </div>
+                <div class="language-item">
+                    <div class="language-flag">📰</div>
+                    <h3>Urdu</h3>
+                </div>
+                <div class="language-item">
+                    <div class="language-flag">📰</div>
+                    <h3>Hindi</h3>
+                </div>
+                <div class="language-item">
+                    <div class="language-flag">📰</div>
+                    <h3>Kannada</h3>
+                </div>
+                <div class="language-item">
+                    <div class="language-flag">📰</div>
+                    <h3>Malayalam</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="methodology fade-in" id="methodology">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Teaching Method</h2>
+                <p>The LSRW approach for comprehensive language acquisition</p>
+            </div>
+            <div class="method-steps">
+                <div class="method-step">
+                    <div class="step-number">1</div>
+                    <h3>Listening</h3>
+                    <p>Audio resources, videos, and conversations</p>
+                </div>
+                <div class="method-step">
+                    <div class="step-number">2</div>
+                    <h3>Speaking</h3>
+                    <p>Dialogue practice and role plays</p>
+                </div>
+                <div class="method-step">
+                    <div class="step-number">3</div>
+                    <h3>Reading</h3>
+                    <p>News articles, short stories, thematic texts</p>
+                </div>
+                <div class="method-step">
+                    <div class="step-number">4</div>
+                    <h3>Writing</h3>
+                    <p>Structured exercises and translation practice</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact fade-in" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch with us to start your language learning journey</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>+91 80759 80845</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>academynextstop@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Location</h3>
+                            <p>ISO-certified educational institution</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div>
+                            <h3>Google Business</h3>
+                            <p><a href="https://g.co/kgs/2VAmQDw" style="color: var(--dark-text);text-decoration: none;font-weight: bold;">View our profile</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Send us a Message</h3>
+                    <form action="#home">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>NesTop Academy</h3>
+                    <p>Nest to Next - Empowering learners with essential language skills through practical, accessible education.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#programs">Programs</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Programs</h3>
+                    <ul>
+                        <li><a href="https://chat.whatsapp.com/LnBc2mhK3D01X16Czt9eyN">Arabic Learning</a></li>
+                        <li><a href="https://chat.whatsapp.com/FTCWJXoLpdwLqxYRQisSKF">English Learning</a></li>
+                        <li><a href="https://chat.whatsapp.com/IRU98MashyWHp9HaL95h8N">Translation</a></li>
+                        <li><a href="https://chat.whatsapp.com/Gt53HziWykKC41HZTFNfZR?mode=ac_t">Newspapers</a></li>
+                        <li><a href="https://chat.whatsapp.com/C1F3I8dB5LLAj64AAsb7tr?mode=ac_t">AI Course</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="social-icons" style="margin-bottom: 20px;">
+                <a href="https://chat.whatsapp.com/LnBc2mhK3D01X16Czt9eyN"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fas fa-xmark"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 NesTop Academy. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Hamburger menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Animation on scroll and number counting
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    if (entry.target.id === 'about') {
+                        startCounters();
+                        observer.unobserve(entry.target); // Stop observing after animation
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('section, .program-card, .feature-item, .stat-item, .testimonial-card, .language-item, .method-step').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Function to start the counting animation
+        const startCounters = () => {
+            const counters = document.querySelectorAll('.stat-number');
+            const speed = 200; // The lower the number, the faster the counter
+
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                let count = 0;
+                let step = target / speed;
+                
+                const updateCount = () => {
+                    count += step;
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count);
+                        requestAnimationFrame(updateCount);
+                    } else {
+                        counter.innerText = target.toLocaleString() + (counter.getAttribute('data-target') === '100' ? '%' : (counter.getAttribute('data-target') === '4000' ? '+' : ''));
+                    }
+                };
+
+                updateCount();
+            });
+        };
+
+        // Back to top button functionality
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 200) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+    </script>
+</body>
+</html>
